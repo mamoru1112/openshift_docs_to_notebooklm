@@ -25,12 +25,11 @@ def get_single_page_links(base_url):
             section_base = href.strip('/').replace('/html/', '/html-single/') + "/index"
             single_page_url = urljoin("https://docs.redhat.com/", section_base)
 
-            print(f"debug: {single_page_url}")
-
             # 確認のためリクエスト（存在チェック）
             check = requests.head(single_page_url)
             if check.status_code == 200:
                 single_page_links[text] = single_page_url
+                print(f"debug: {single_page_url}")
 
     return single_page_links
 
